@@ -47,7 +47,7 @@ RUN apt-get install -y openjdk-7-jdk \
 
 RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list \
     && apt-get update -y \
-    && apt-get install -y sbt \
+    && apt-get install -y --force-yes sbt \
     && curl -SL http://downloads.typesafe.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.deb -o scala-${SCALA_VERSION}.deb \
     && dpkg -i scala-${SCALA_VERSION}.deb \
     && apt-get install -f \
