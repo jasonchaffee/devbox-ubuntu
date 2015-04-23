@@ -10,7 +10,7 @@ RUN apt-get update -y \
     && apt-get install -y git git-svn subversion \
     && apt-get install -y colordiff gzip tar unzip \
     && apt-get install -y vim tmux xterm lynx curl wget \
-    && apt-get install -y unity vino
+    && apt-get install -y vino
 
 ENV DOCKER_VERSION 1.6.0
 ENV DOCKER_COMPOSE_VERSION 1.2.0
