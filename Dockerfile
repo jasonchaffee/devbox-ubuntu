@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:vivid
 
 MAINTAINER Jason Chaffee <jasonchaffee@gmail.com>
 
