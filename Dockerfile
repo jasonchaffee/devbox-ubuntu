@@ -8,10 +8,9 @@ RUN apt-get update -y \
     && apt-get update -y \
     && apt-get clean all \
     && apt-get install -y git git-svn subversion \
-    && apt-get install -y colordiff postfix \
-    && apt-get install -y gzip tar unzip \
+    && apt-get install -y colordiff gzip tar unzip \
     && apt-get install -y vim tmux xterm lynx curl wget \
-    && apt-get install -y tightvncserver #xfce4 xfce4-goodies
+    && apt-get install -y vino #xfce4 xfce4-goodies
 
 ENV DOCKER_VERSION 1.6.0
 ENV DOCKER_COMPOSE_VERSION 1.2.0
@@ -23,9 +22,6 @@ ENV JAVA_HOME_VERSION ${JAVA_7}
 
 ENV SCALA_VERSION 2.11.6
 ENV TYPESAFE_ACTIVATOR_VERSION 1.3.2
-
-ENV GIT_USER_NAME John Doe
-ENV GIT_USER_EMAIL john.doe@mycompany.com
 
 ENV JAVA_HOME /usr/lib/jvm//usr/lib/jvm/java-${JAVA_HOME_VERSION}-openjdk-amd64
 
