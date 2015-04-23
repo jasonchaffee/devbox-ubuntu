@@ -10,7 +10,7 @@ RUN apt-get update -y \
     && apt-get install -y git git-svn subversion \
     && apt-get install -y colordiff gzip tar unzip \
     && apt-get install -y vim tmux xterm lynx curl wget \
-    && apt-get install -y vino #xfce4 xfce4-goodies
+    && apt-get install -y unity vino
 
 ENV DOCKER_VERSION 1.6.0
 ENV DOCKER_COMPOSE_VERSION 1.2.0
@@ -61,9 +61,9 @@ RUN mv .gitignore ~/.gitignore
 COPY setup.sh setup.sh
 RUN chmod +x setup.sh
 
-RUN mkdir -p ~/.vnc \
-    && echo password | vncpasswd -f > ~/.vnc/passwd \
-    && chmod 600 ~/.vnc/passwd
+#RUN mkdir -p ~/.vnc \
+#    && echo password | vncpasswd -f > ~/.vnc/passwd \
+#    && chmod 600 ~/.vnc/passwd
 
 EXPOSE 5901
 
