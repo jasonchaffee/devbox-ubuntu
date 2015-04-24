@@ -11,7 +11,7 @@ RUN apt-get update -y \
     && apt-get clean all \
     && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim tmux xterm firefox lynx curl wget \
     && apt-get clean all \
-    && apt-get install -y vnc4server gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
+    && apt-get install -y vnc4server ubuntu-desktop cinnamon gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
     && apt-get clean all
 
 ENV DOCKER_VERSION 1.6.0
