@@ -2,6 +2,8 @@ FROM ubuntu:vivid
 
 MAINTAINER Jason Chaffee <jasonchaffee@gmail.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update -y \
     && apt-get install -y software-properties-common python-software-properties \
     && add-apt-repository ppa:openjdk-r/ppa \
@@ -9,7 +11,7 @@ RUN apt-get update -y \
     && apt-get clean all \
     && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim tmux xterm firefox lynx curl wget \
     && apt-get clean all \
-    && apt-get install -y vnc4server gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
+    && apt-get install -y vnc4server gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
     && apt-get clean all
 
 ENV DOCKER_VERSION 1.6.0
