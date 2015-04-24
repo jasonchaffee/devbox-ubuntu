@@ -9,8 +9,8 @@ RUN apt-get update -y \
     && apt-get clean all \
     && apt-get install -y git git-svn subversion \
     && apt-get install -y colordiff gzip tar unzip \
-    && apt-get install -y vim tmux xterm lynx curl wget \
-    && apt-get install -y vino
+    && apt-get install -y vim tmux xterm firefox lynx curl wget \
+    && apt-get install -y vnc4server ubuntu-desktop cinnamon gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus
 
 ENV DOCKER_VERSION 1.6.0
 ENV DOCKER_COMPOSE_VERSION 1.2.0
@@ -61,10 +61,14 @@ RUN mv .gitignore ~/.gitignore
 COPY setup.sh setup.sh
 RUN chmod +x setup.sh
 
-#RUN mkdir -p ~/.vnc \
-#    && echo password | vncpasswd -f > ~/.vnc/passwd \
-#    && chmod 600 ~/.vnc/passwd
+COPY xstartup xstartup
+COPY passwd passwd
+
+RUN mkdir -p ~/.vnc \
+    && mv xstartup ~/.vnc/xstartup \
+    && mv passwd ~/.vnc/passwd \
+    && chmod 600 ~/.vnc/passwd
 
 EXPOSE 5901
 
-CMD /setup.sh && vncserver :1 -name vnc -geometry 800x640 && tail -f ~/.vnc/*:1.log
+CMD /setup.sh && vncserver :1 -name vnc && tail -f ~/.vnc/*:1.log
