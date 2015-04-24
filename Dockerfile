@@ -7,10 +7,10 @@ RUN apt-get update -y \
     && add-apt-repository ppa:openjdk-r/ppa \
     && apt-get update -y \
     && apt-get clean all \
-    && apt-get install -y git git-svn subversion \
-    && apt-get install -y colordiff gzip tar unzip \
-    && apt-get install -y vim tmux xterm firefox lynx curl wget \
-    && apt-get install -y vnc4server ubuntu-desktop cinnamon gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus
+    && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim tmux xterm firefox lynx curl wget \
+    && apt-get clean all \
+    && apt-get install -y vnc4server ubuntu-desktop cinnamon gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
+    && apt-get clean all
 
 ENV DOCKER_VERSION 1.6.0
 ENV DOCKER_COMPOSE_VERSION 1.2.0
@@ -39,7 +39,8 @@ RUN curl -SL https://github.com/docker/machine/releases/download/${DOCKER_MACHIN
 
 RUN apt-get install -y openjdk-7-jdk \
     && apt-get install -y openjdk-8-jdk \
-	&& apt-get install -y maven
+	&& apt-get install -y maven \
+	&& apt-get clean all
 
 RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list \
     && apt-get update -y \
@@ -47,6 +48,7 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
     && curl -SL http://downloads.typesafe.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.deb -o scala-${SCALA_VERSION}.deb \
     && dpkg -i scala-${SCALA_VERSION}.deb \
     && apt-get install -f \
+    && apt-get clean all \
 	&& curl -SL http://downloads.typesafe.com/typesafe-activator/${TYPESAFE_ACTIVATOR_VERSION}/typesafe-activator-${TYPESAFE_ACTIVATOR_VERSION}-minimal.zip -o typesafe-activator-${TYPESAFE_ACTIVATOR_VERSION}-minimal.zip \
 	&& unzip typesafe-activator-${TYPESAFE_ACTIVATOR_VERSION}-minimal.zip -d /usr/local/ \
 	&& ln -s /usr/local/activator-${TYPESAFE_ACTIVATOR_VERSION}-minimal /usr/local/typesafe-activator \
