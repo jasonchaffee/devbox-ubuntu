@@ -59,7 +59,7 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 COPY bashrc .bashrc
 RUN mv .bashrc ~/.bashrc
 
-COPY zshhrc .zshhrc
+COPY zshrc .zshrc
 RUN mv .zshrc ~/.zshrc
 
 #RUN chsh -s /bin/zsh
