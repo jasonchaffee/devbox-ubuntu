@@ -9,7 +9,7 @@ RUN apt-get update -y \
     && add-apt-repository ppa:openjdk-r/ppa \
     && apt-get update -y \
     && apt-get clean all \
-    && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim tmux xterm firefox lynx curl wget \
+    && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim tmux xterm zsh firefox lynx curl wget \
     && apt-get clean all \
     && apt-get install -y vnc4server ubuntu-desktop cinnamon gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
     && apt-get clean all
@@ -58,6 +58,9 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 
 COPY bashrc .bashrc
 RUN mv .bashrc ~/.bashrc
+
+COPY zshhrc .zshhrc
+RUN mv .zshrc ~/.zshrc
 
 COPY gitignore .gitignore
 RUN mv .gitignore ~/.gitignore
