@@ -62,6 +62,8 @@ RUN mv .bashrc ~/.bashrc
 COPY zshhrc .zshhrc
 RUN mv .zshrc ~/.zshrc
 
+#RUN chsh -s /bin/zsh
+
 COPY gitignore .gitignore
 RUN mv .gitignore ~/.gitignore
 
