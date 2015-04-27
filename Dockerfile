@@ -56,16 +56,11 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 	&& ln -s /usr/local/activator-${TYPESAFE_ACTIVATOR_VERSION}-minimal /usr/local/typesafe-activator \
 	&& ln -s /usr/local/typesafe-activator/activator /usr/local/bin/activator
 
-COPY bashrc .bashrc
-RUN mv .bashrc ~/.bashrc
+RUN git clone https://github.com/jasonchaffee/devbox-config.git .devbox-config
 
-COPY zshrc .zshrc
-RUN mv .zshrc ~/.zshrc
+RUN .devbox-config/config install
 
 RUN chsh -s $(which zsh)
-
-COPY gitignore .gitignore
-RUN mv .gitignore ~/.gitignore
 
 COPY setup.sh setup.sh
 RUN chmod +x setup.sh
