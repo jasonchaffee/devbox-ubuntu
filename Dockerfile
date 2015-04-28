@@ -56,9 +56,9 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 	&& ln -s /usr/local/activator-${TYPESAFE_ACTIVATOR_VERSION}-minimal /usr/local/typesafe-activator \
 	&& ln -s /usr/local/typesafe-activator/activator /usr/local/bin/activator
 
-RUN git clone https://github.com/jasonchaffee/devbox-config.git .devbox-config
+RUN git clone https://github.com/jasonchaffee/devbox-config.git /.devbox-config
 
-RUN .devbox-config/config install
+RUN /.devbox-config/config install
 
 COPY xstartup xstartup
 RUN chmod +x xstartup
