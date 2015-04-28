@@ -9,9 +9,9 @@ RUN apt-get update -y \
     && add-apt-repository ppa:openjdk-r/ppa \
     && apt-get update -y \
     && apt-get clean all \
-    && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim tmux xterm zsh firefox lynx curl wget \
+    && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim xterm zsh firefox lynx curl wget tmux \
     && apt-get clean all \
-    && apt-get install -y vnc4server ubuntu-desktop cinnamon gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
+    && apt-get install -y vnc4server ubuntu-desktop gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
     && apt-get clean all
 
 ENV DOCKER_VERSION 1.6.0
@@ -60,11 +60,6 @@ RUN git clone https://github.com/jasonchaffee/devbox-config.git .devbox-config
 
 RUN .devbox-config/config install
 
-RUN chsh -s $(which zsh)
-
-COPY setup.sh setup.sh
-RUN chmod +x setup.sh
-
 COPY xstartup xstartup
 RUN chmod +x xstartup
 
@@ -75,6 +70,9 @@ RUN mkdir -p ~/.vnc \
     && mv passwd ~/.vnc/passwd \
     && chmod 600 ~/.vnc/passwd
 
+RUN chsh -s $(which zsh)
+RUN su -s /bin/zsh -c '. ~/.zshrc' root
+
 EXPOSE 5901
 
-CMD /setup.sh && vncserver :1 -name vnc && tail -f ~/.vnc/*:1.log
+CMD /.devbox-config/config git && vncserver :1 -name vnc && tail -f ~/.vnc/*:1.log
