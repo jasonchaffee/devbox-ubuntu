@@ -14,7 +14,7 @@ RUN apt-get update -y \
     && apt-get install -y vnc4server ubuntu-desktop gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
     && apt-get clean all
 
-ENV DOCKER_VERSION 1.6.0
+ENV DOCKER_VERSION 1.6.2
 ENV DOCKER_COMPOSE_VERSION 1.2.0
 ENV DOCKER_MACHINE_VERSION v0.2.0
 
