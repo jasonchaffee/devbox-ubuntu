@@ -1,11 +1,11 @@
-FROM ubuntu:vivid
+FROM ubuntu:latest
 
 MAINTAINER Jason Chaffee <jasonchaffee@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -y \
-    && apt-get install -y software-properties-common python-software-properties \
+    && apt-get install -y software-properties-common \
     && add-apt-repository ppa:openjdk-r/ppa \
     && apt-get update -y \
     && apt-get clean all \
