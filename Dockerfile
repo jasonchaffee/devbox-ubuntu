@@ -9,7 +9,7 @@ RUN apt-get update -y \
     && add-apt-repository ppa:openjdk-r/ppa \
     && apt-get update -y \
     && apt-get clean all \
-    && apt-get install -y git git-svn subversion colordiff gzip tar unzip vim tmux xterm zsh firefox lynx curl wget \
+    && apt-get install -y git git-svn subversion colorsvn colordiff colortail gzip tar unzip vim tmux xterm zsh firefox lynx curl wget \
     && apt-get clean all \
     && apt-get install -y vnc4server ubuntu-desktop gnome gnome-session gnome-panel gnome-settings-daemon gnome-terminal metacity nautilus \
     && apt-get clean all
